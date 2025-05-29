@@ -216,7 +216,7 @@ async def check_profile(message):
             ]
         ]
         )
-        if get_user_info(user_id,'date') != 'N/A' and not (get_user_info(user_id,'trial')):
+        if get_user_info(user_id,'date') != 'N/A':
             now = datetime.now()
             expire_date = datetime.strptime(get_user_info(user_id,'date'), "%Y-%m-%d %H:%M:%S.%f")
             if now > expire_date:
@@ -233,8 +233,7 @@ async def check_profile(message):
                 await message.answer("🕜 Your subscription expire in "+expire_date[:16],reply_markup=keyboard)
         elif get_user_info(user_id,'date') == 'N/A':
             await message.answer("🚫 You didn't subscribe yet.",reply_markup=keyboard)
-        else:
-            await message.answer("🚫 Your trial mode plan has expired.",reply_markup=keyboard)
+
 
 
 #REDEEM KEY
