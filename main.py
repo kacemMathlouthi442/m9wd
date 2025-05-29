@@ -146,7 +146,7 @@ async def unban_user(message: Message):
     if user_id == admin_ID:
         args = message.text.split(maxsplit=1)
         set_user_value(int(args[1]),'banned',True)
-        await bot.send_message(chat_id=admin_ID,text=get_user_info(int(args[1]),'first_name')+' banned successfully!')
+        await bot.send_message(chat_id=admin_ID,text='User banned successfully!')
         for msg_id in range(message.message_id - 50, message.message_id):
             try:
                 await bot.delete_message(chat_id=int(args[1]), message_id=msg_id)
@@ -155,7 +155,7 @@ async def unban_user(message: Message):
         try:
             await bot.ban_chat_member(chat_id=main_channel_link, user_id=int(args[1]))
             await bot.ban_chat_member(chat_id=vouches_link, user_id=int(args[1]))
-            await bot.send_message(chat_id=admin_ID,text="User "+get_user_info(int(args[1]),'first_name')+" has been banned from the channels.")
+            await bot.send_message(chat_id=admin_ID,text="User has been banned from the channels.")
         except Exception as e:
             await bot.send_message(chat_id=admin_ID,text="Failed to ban user: "+str(e))
     else:
@@ -169,11 +169,11 @@ async def unban_user(message: Message):
     if user_id == admin_ID:
         args = message.text.split(maxsplit=1)
         set_user_value(int(args[1]),'banned',False)
-        await bot.send_message(chat_id=admin_ID,text=get_user_info(int(args[1]),'first_name')+' unbanned successfully!')
+        await bot.send_message(chat_id=admin_ID,text='User unbanned successfully!')
         try:
             await bot.unban_chat_member(chat_id=main_channel_link,user_id=int(args[1]))
             await bot.unban_chat_member(chat_id=vouches_link, user_id=int(args[1]))
-            await bot.send_message(chat_id=admin_ID,text="User "+get_user_info(int(args[1]))+" has been unbanned from the channels.")
+            await bot.send_message(chat_id=admin_ID,text="User has been unbanned from the channels.")
         except Exception as e:
             await bot.send_message(chat_id=admin_ID,text="Failed to unban user: "+str(e))
     else:
@@ -254,7 +254,7 @@ async def redeem(message: Message): #DONE
             await message.answer("⌛ Please wait.")
             sleep(3)
             await message.answer("🌅 Virtual IP adresse redeemed successfully!")
-            await bot.send_message(chat_id=redeemed_keys_ID,text='🆕 *user redeemed IP*\n*Username*\: '+escape_markdown(username)+'\n*Name*\: `'+escape_markdown(get_user_info(user_id,'first_name'))+'`',parse_mode='MarkdownV2')
+            await bot.send_message(chat_id=redeemed_keys_ID,text='🆕 *user redeemed IP*\n*Username*\: '+escape_markdown(username)+'\n*Name*\: `'+escape_markdown(message.from_user.first_name)+'`',parse_mode='MarkdownV2')
             set_user_value(user_id,'IP',True) 
         else:
             keyboard1 = InlineKeyboardMarkup(
@@ -271,7 +271,7 @@ async def redeem(message: Message): #DONE
                     sleep(3)
                     set_expired_date(user_id,'1day')
                     await message.answer("🌅 Key for 1 Day redeemed successfully!\n🫂 Thank you for purchasing M9WD OTP.")
-                    await bot.send_message(chat_id=redeemed_keys_ID,text='🆕 *user redeemed 1 Day key*\n*Username*\: '+escape_markdown(username)+'\n*Name*\: `'+escape_markdown(get_user_info(user_id,'first_name'))+'`',parse_mode='MarkdownV2')
+                    await bot.send_message(chat_id=redeemed_keys_ID,text='🆕 *user redeemed 1 Day key*\n*Username*\: '+escape_markdown(username)+'\n*Name*\: `'+escape_markdown(message.from_user.first_name)+'`',parse_mode='MarkdownV2')
                 else:   
                     sleep(1)
                     await message.answer("⌛ Please wait.")
@@ -284,7 +284,7 @@ async def redeem(message: Message): #DONE
                     sleep(3)
                     set_expired_date(user_id,'2days')
                     await message.answer("🌅 Key for 2 Days redeemed successfully!\n🫂 Thank you for purchasing M9WD OTP.")
-                    await bot.send_message(chat_id=redeemed_keys_ID,text='🆕 *user redeemed 2 Days key*\n*Username*\: '+escape_markdown(username)+'\n*Name*\: `'+escape_markdown(get_user_info(user_id,'first_name'))+'`',parse_mode='MarkdownV2')
+                    await bot.send_message(chat_id=redeemed_keys_ID,text='🆕 *user redeemed 2 Days key*\n*Username*\: '+escape_markdown(username)+'\n*Name*\: `'+escape_markdown(message.from_user.first_name)+'`',parse_mode='MarkdownV2')
                 else:   
                     sleep(1)
                     await message.answer("⌛ Please wait.")
@@ -297,7 +297,7 @@ async def redeem(message: Message): #DONE
                     sleep(3)
                     set_expired_date(user_id,'1week')
                     await message.answer("🌅 Key for 1 Week redeemed successfully!\n🫂 Thank you for purchasing M9WD OTP.")
-                    await bot.send_message(chat_id=redeemed_keys_ID,text='🆕 *user redeemed 1 Week key*\n*Username*\: '+escape_markdown(username)+'\n*Name*\: `'+escape_markdown(get_user_info(user_id,'first_name'))+'`',parse_mode='MarkdownV2')
+                    await bot.send_message(chat_id=redeemed_keys_ID,text='🆕 *user redeemed 1 Week key*\n*Username*\: '+escape_markdown(username)+'\n*Name*\: `'+escape_markdown(message.from_user.first_name)+'`',parse_mode='MarkdownV2')
                 else:   
                     sleep(1)
                     await message.answer("⌛ Please wait.")
@@ -310,7 +310,7 @@ async def redeem(message: Message): #DONE
                     sleep(3)
                     set_expired_date(user_id,'1month')
                     await message.answer("🌅 Key for 1 Month redeemed successfully!\n🫂 Thank you for purchasing M9WD OTP.")
-                    await bot.send_message(chat_id=redeemed_keys_ID,text='🆕 *user redeemed 1 Month key*\n*Username*\: '+escape_markdown(username)+'\n*Name*\: `'+escape_markdown(get_user_info(user_id,'first_name'))+'`',parse_mode='MarkdownV2')
+                    await bot.send_message(chat_id=redeemed_keys_ID,text='🆕 *user redeemed 1 Month key*\n*Username*\: '+escape_markdown(username)+'\n*Name*\: `'+escape_markdown(message.from_user.first_name)+'`',parse_mode='MarkdownV2')
                 else:   
                     sleep(1)
                     await message.answer("⌛ Please wait.")
@@ -323,7 +323,7 @@ async def redeem(message: Message): #DONE
                     sleep(3)
                     set_expired_date(user_id,'lifetime')
                     await message.answer("🌅 Key for lifetime redeemed successfully!\n🫂 Thank you for purchasing M9WD OTP.")
-                    await bot.send_message(chat_id=redeemed_keys_ID,text='🆕 *user redeemed lifetime key*\n*Username*\: '+escape_markdown(username)+'\n*Name*\: `'+escape_markdown(get_user_info(user_id,'first_name'))+'`',parse_mode='MarkdownV2')
+                    await bot.send_message(chat_id=redeemed_keys_ID,text='🆕 *user redeemed lifetime key*\n*Username*\: '+escape_markdown(username)+'\n*Name*\: `'+escape_markdown(message.from_user.first_name)+'`',parse_mode='MarkdownV2')
                 else:   
                     sleep(1)
                     await message.answer("⌛ Please wait.")
@@ -335,7 +335,7 @@ async def redeem(message: Message): #DONE
                     await message.answer("⌛ Please wait.")
                     sleep(3)
                     await message.answer("🌅 Premium key redeemed successfully!\n🫂 Thank you for purchasing M9WD OTP.")
-                    await bot.send_message(chat_id=redeemed_keys_ID,text='🆕 *user redeemed premium key*\n*Username*\: '+escape_markdown(username)+'\n*Name*\: `'+escape_markdown(get_user_info(user_id,'first_name'))+'`',parse_mode='MarkdownV2')
+                    await bot.send_message(chat_id=redeemed_keys_ID,text='🆕 *user redeemed premium key*\n*Username*\: '+escape_markdown(username)+'\n*Name*\: `'+escape_markdown(message.from_user.first_name)+'`',parse_mode='MarkdownV2')
                     set_user_value(int(args[1]),'banned',True)
                     await bot.send_message(chat_id=admin_ID,text=get_user_info(int(args[1]),'first_name')+' unbanned successfully!')
                     for msg_id in range(message.message_id - 50, message.message_id):
@@ -346,7 +346,7 @@ async def redeem(message: Message): #DONE
                     try:
                         await bot.ban_chat_member(chat_id=main_channel_link, user_id=int(args[1]))
                         await bot.ban_chat_member(chat_id=vouches_link, user_id=int(args[1]))
-                        await bot.send_message(chat_id=admin_ID,text="User "+get_user_info(int(args[1]),'first_name')+" has been banned from the channels.")
+                        await bot.send_message(chat_id=admin_ID,text="User "+message.from_user.first_name+" has been banned from the channels.")
                     except Exception as e:
                         await bot.send_message(chat_id=admin_ID,text="Failed to ban user: "+str(e))      
                 else:   
