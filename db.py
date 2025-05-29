@@ -22,7 +22,7 @@ def create_users_table():
 
 #GET A USER INFO 
 def get_user_info(user_id, col):
-    allowed_columns = {"id", "first_name","banned", "date", "trial","IP"}
+    allowed_columns = {"id","banned", "date","IP"}
     if col not in allowed_columns:
         raise ValueError("Invalid column name")
     with get_connection() as conn:
@@ -45,7 +45,7 @@ def add_user(user):
 
 #SET USER VALUE
 def set_user_value(user_id, col, value):
-    allowed_columns = {"first_name","banned", "date", "trial","IP"}
+    allowed_columns = {"banned", "date","IP"}
     if col not in allowed_columns:
         raise ValueError("Invalid column name")
     with get_connection() as conn:
