@@ -458,6 +458,7 @@ async def restart_message(callback: CallbackQuery, bot: Bot):
             ]
         ]
         )
+         await callback.message.delete()
         await callback.message.answer("""📲 M9WD OTP BOT
 
 ❓ Here you can find frequently asked questions that we have compiled for you in an organized and user-friendly manner. They'll be updated as we go!
