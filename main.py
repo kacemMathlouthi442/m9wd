@@ -366,8 +366,8 @@ async def redeem(message: Message): #DONE
 async def send_local_video(message: Message):
     user_id = message.from_user.id
     if not (get_user_info(user_id,'banned')):
-            keyboard = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="🆘 Support", url=admin_link)]])
-            keyboard1 = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="💲 Pricing", callback_data="Purchase")],[InlineKeyboardButton(text="🔙 BACK TO MENU", callback_data="back")]])
+            keyboard = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="📞 Support", url=admin_link)]])
+            keyboard1 = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="🛒 Purchase", callback_data="Purchase")],[InlineKeyboardButton(text="🔙 BACK TO MENU", callback_data="back")]])
             if get_user_info(user_id,'date')!='N/A':
                     now = datetime.now()
                     expire_date = datetime.strptime(get_user_info(user_id,'date'), "%Y-%m-%d %H:%M:%S.%f")
@@ -406,8 +406,8 @@ async def send_local_video(message: Message):
 async def prebuilt_commands(message: Message):
     user_id = message.from_user.id
     if not (get_user_info(user_id,'banned')):
-            keyboard = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="🆘 Support", url=admin_link)]])
-            keyboard1 = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="💲 Pricing", callback_data="Purchase")],[InlineKeyboardButton(text="🔙 BACK TO MENU", callback_data="back")]])
+            keyboard = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="📞 Support", url=admin_link)]])
+            keyboard1 = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="🛒 Purchase", callback_data="Purchase")],[InlineKeyboardButton(text="🔙 BACK TO MENU", callback_data="back")]])
             if get_user_info(user_id,'date')!='N/A':
                     now = datetime.now()
                     expire_date = datetime.strptime(get_user_info(user_id,'date'), "%Y-%m-%d %H:%M:%S.%f")
@@ -474,7 +474,7 @@ async def commands(callback: CallbackQuery, bot: Bot):
             keyboard = InlineKeyboardMarkup(
             inline_keyboard=[
                 [
-                    InlineKeyboardButton(text="💲 Pricing", callback_data="Purchase")
+                    InlineKeyboardButton(text="🛒 Purchase", callback_data="Purchase")
                 ],
                 [
                     InlineKeyboardButton(text="🔙 BACK TO MENU", callback_data="back")
@@ -509,7 +509,7 @@ async def features(callback: CallbackQuery, bot: Bot):
         keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
             [
-                InlineKeyboardButton(text="💲 Pricing", callback_data="Purchase")
+                InlineKeyboardButton(text="🛒 Purchase", callback_data="Purchase")
             ],
             [
                 InlineKeyboardButton(text="🔙 BACK TO MENU", callback_data="back")
