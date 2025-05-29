@@ -37,10 +37,10 @@ def add_user(user):
     with get_connection() as conn:
         with conn.cursor() as cur:
             cur.execute("""
-                INSERT INTO users (id, first_name)
-                VALUES (%s, %s)
+                INSERT INTO users (id)
+                VALUES (%s)
                 ON CONFLICT (id) DO NOTHING
-            """, (user.id,user.first_name))
+            """, (user.id,))
             conn.commit()
 
 #SET USER VALUE
