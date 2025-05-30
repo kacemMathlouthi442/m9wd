@@ -470,7 +470,7 @@ async def restart_message(callback: CallbackQuery, bot: Bot):
         )
         await callback.message.delete()
         image = FSInputFile("img.jpg")
-        await callback.message.answer(image,caption="""📲 M9WD OTP BOT
+        await callback.message.answer_photo(image,caption="""📲 M9WD OTP BOT
 
 ❓ Here you can find frequently asked questions that we have compiled for you in an organized and user-friendly manner. They'll be updated as we go!
 
