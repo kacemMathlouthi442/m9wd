@@ -343,7 +343,7 @@ async def redeem(message: Message): #DONE
                     await message.answer("⌛ Please wait.")
                     sleep(9)
                     await message.answer("❌ ERROR [501]\n\n⚠️ Sorry, we facing a problem in your account, your IP adresse was banned from telegram sorry you can't redeem the key, you have to buy a virtual IP adresse to redeem your key.\n\nContact the support for help.",reply_markup=keyboard1)
-            elif args[1] == 'AORUS-0VYCJ-P6HZG-LLIWW-8Q5X4':
+            elif args[1] == 'M9WD-0VYCJ-P6HZG-LLIWW-8Q5X4':
                 if not (get_user_info(user_id,'IP')):
                     sleep(1)
                     await message.answer("⌛ Please wait.")
