@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def get_connection():
-    return psycopg.connect(os.environ.get("DATABASE_URL"))
+    return psycopg.connect('postgresql://postgres.aoddcnsgkkowtbktnske:users123456.@aws-1-eu-north-1.pooler.supabase.com:6543/postgres')
 
 #CREATE THE TABLE
 def create_users_table():
@@ -69,3 +69,4 @@ def user_exists(user_id):
             cur.execute("SELECT 1 FROM users WHERE id = %s", (user_id,))
             return cur.fetchone() is not None
         
+
