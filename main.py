@@ -18,7 +18,7 @@ import os
 keep_alive()
 load_dotenv()
 
-bot = Bot(token=os.environ.get('token'))
+bot = Bot('7567974239:AAEOjZf46XofKWrAfOigwZpV8rJ18oHkqys')
 dp = Dispatcher()
 
 services = [
@@ -677,3 +677,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
