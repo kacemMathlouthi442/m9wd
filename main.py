@@ -670,11 +670,15 @@ async def unknown_text(message: Message):
         await message.answer("🤖 Apologies, I didn’t understand your request. For further assistance, please contact our support team.",reply_markup=keyboard)
 
 
-# Run bot
 async def main():
     create_users_table()
     await dp.start_polling(bot)
 
-if __name__ == "__main__":
-    asyncio.run(main())
+while True:
+    try:
+        asyncio.run(main())
+    except Exception as e:
+        print(f"❌ Bot crashed: {e}")
+        sleep(3)
+
 
