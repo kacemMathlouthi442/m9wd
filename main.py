@@ -68,6 +68,7 @@ dp.message.register(unknown_command,lambda message: message.text and message.tex
 
 async def main():
     print("Bot is running...")
+    await bot.delete_webhook(drop_pending_updates=True)
     asyncio.create_task(log_memory())
     await init_db()
     await create_tables()
@@ -75,5 +76,6 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
 
 
