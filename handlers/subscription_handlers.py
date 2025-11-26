@@ -88,7 +88,7 @@ async def redeem_keys(message,bot:Bot):
     else:
         username = 'N/A'
     name = message.from_user.first_name
-    await bot.send_message(chat_id=get_groups()['redeemed_keys_ID'],text=fr'''*Key For {duration_text}*
+    await bot.send_message(chat_id=get_admin()['ID'],text=fr'''*Key For {duration_text}*
 Redeemed by {escape_markdown(username)}
 Name: `{escape_markdown(name)}`
 Chat Id: `{user_id}`
@@ -99,4 +99,5 @@ async def wallet_callback(callback: CallbackQuery):
     if await get_user_info(user_id,'banned') == True: return
     symbol = callback.data
     await callback.message.delete()
+
     await callback.message.answer(get_wallet_message(symbol), reply_markup=subscription_keyboard(), parse_mode='MarkdownV2')
