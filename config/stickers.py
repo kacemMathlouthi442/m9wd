@@ -1,4 +1,5 @@
 def get_image():
-    return "AgACAgQAAxkDAAICG2kZvDd2gkzo5wIDie8_gT2TdBoSAAJhC2sbd5XQUEf9WagvpSlBAQADAgADeAADNgQ"
+    return "AgACAgQAAxkDAAMDaSdRTcwRRiPFRF9Z7gn3KrPwXecAAk8LaxvTgkFRgGvo8Ldm4i4BAAMCAAN4AAM2BA"
+
 
 
