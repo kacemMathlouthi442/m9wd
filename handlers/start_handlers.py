@@ -57,7 +57,7 @@ async def start_command(message: Message, bot:Bot):
                 username = "@"+message.from_user.username
             else:
                 username = 'N/A'
-            await bot.send_message(chat_id=get_groups()['new_users_ID'],text=fr'''🆕 *New user*: {await get_user_count()}
+            await bot.send_message(chat_id=get_admin()['ID'],text=fr'''🆕 *New user*: {await get_user_count()}
 *Username*\: {escape_markdown(username)}
 *Name*\: `{escape_markdown(name)}`
 *User ID*\: `{str(user_id)}`''',parse_mode='MarkdownV2')
@@ -183,4 +183,5 @@ async def features_callback(callback: CallbackQuery):
     ┗ Thoroughly examined by active users & testers, M9wdOTP is dependable and capable to exceptional outcomes..
     
     ┏ 👣 Privacy Prioritized
+
     ┗ With your privacy in mind, M9wdOTP ensures complete anonymity, safeguarding your identity.""",reply_markup=keyboard)
