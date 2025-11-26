@@ -11,19 +11,6 @@ bot = Bot(token='8599356028:AAFJiyUhrveWENRSj-oLCOFxMCyeWy5-FPY')
 dp = Dispatcher()
 
 
-
-def get_memory_usage():
-    process = psutil.Process(os.getpid())
-    mem = process.memory_info().rss / (1024 * 1024)  # Convert bytes to MB
-    return round(mem, 2)
-
-# Example: log it every few minutes
-async def log_memory():
-    while True:
-        await bot.send_message(-1003154306215,text=f"💾 Memory usage: *{escape_markdown(str(get_memory_usage()))}* MB",parse_mode='MarkdownV2')
-        await asyncio.sleep(300)
-
-
 # START / HELP / UNKNOWN
 # COMMAND
 dp.message.register(help_command, Command(commands=["help"]))
@@ -76,6 +63,7 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
 
 
 
