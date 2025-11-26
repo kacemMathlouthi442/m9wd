@@ -1,7 +1,7 @@
 def get_admin():
     return {
-        "link": "https://t.me/anyy44571",
-        "id": 5937754165,
+        "link": "https://t.me/m9wwwwwdf",
+        "id": 6974962502,
     }
 
 def get_error():
@@ -14,3 +14,4 @@ Possible causes:
 • Spoofing is not available in your region due to local telecom regulations\.
 Please verify your network environment or contact *support* if you believe this is a mistake\."""
     )
+
