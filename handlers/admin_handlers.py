@@ -11,30 +11,30 @@ def keys_type():
         [InlineKeyboardButton(text="🔙 BACK TO MENU", callback_data="back")]])
 
 async def ban_command(message: Message):
-    if message.from_user.id != get_admin()['id']: return
+    if message.from_user.id not in get_admin()['id']: return
     parts = message.text.split()
     if len(parts)<2: return
     await set_user_value(int(parts[1]), 'banned', True)
     await message.answer(f"User {parts[1]} banned ✅")
 
 async def unban_command(message: Message):
-    if message.from_user.id != get_admin()['id']: return
+    if message.from_user.id not in get_admin()['id']: return
     parts = message.text.split()
     if len(parts)<2: return
     await set_user_value(int(parts[1]), 'banned', False)
     await message.answer(f"User {parts[1]} unbanned ✅")
 
 async def keys_command(message: Message):
-    if message.from_user.id != get_admin()['id']: return
+    if message.from_user.id not in get_admin()['id']: return
     await message.answer("🔑 Select the keys type.",reply_markup=keys_type())
 
 async def keys_callback(callback:CallbackQuery):
-    if callback.from_user.id != get_admin()['id']: return
+    if callback.from_user.id not in get_admin()['id']: return
     await callback.message.delete()
     await callback.message.answer("🔑 Select the keys type.",reply_markup=keys_type())
 
 async def get_keys_callback(callback:CallbackQuery):
-    if callback.from_user.id != get_admin()['id']: return
+    if callback.from_user.id not in get_admin()['id']: return
     await callback.message.delete()
     await callback.message.answer("\n".join(await show_valid_keys(callback.data)),parse_mode='MarkdownV2')
 
