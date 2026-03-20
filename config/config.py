@@ -1,7 +1,7 @@
 def get_admin():
     return {
         "link": "https://t.me/m9wwwwwdf",
-        "id": [6974962502, 6753297385],
+        "id": [6974962502,6974962502],
     }
 
 def get_error():
