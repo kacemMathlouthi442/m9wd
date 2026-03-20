@@ -13,7 +13,7 @@ def start_message():
 def admin_start_message(name):
     return fr"""🔥 Welcome back, {name}\!
 
-👑 You’re logged in as the Owner of *DRAGON OTP BOT*\.  
+👑 You’re logged in as the Admin of *M9WD OTP BOT*\.  
 Manage users, keys, and sales — your control center awaits ⚙️
 """
 
@@ -61,7 +61,7 @@ async def start_command(message: Message, bot:Bot):
 *Username*\: {escape_markdown(username)}
 *Name*\: `{escape_markdown(name)}`
 *User ID*\: `{str(user_id)}`''',parse_mode='MarkdownV2')
-        if user_id == get_admin()['id']:
+        if user_id in get_admin()['id']:
             await message.answer(admin_start_message(name), reply_markup=admin_start_keyboard(),parse_mode='MarkdownV2')
             return
         await message.answer_photo(get_image(),caption=start_message(), reply_markup=start_keyboard(),parse_mode='MarkdownV2')
@@ -71,7 +71,7 @@ async def start_callback(callback: CallbackQuery, bot:Bot):
     if not(await get_user_info(user_id,'banned')):
         name = callback.from_user.first_name
         await callback.message.delete()
-        if user_id == get_admin()['id']:
+        if user_id in get_admin()['id']:
             await callback.message.answer(admin_start_message(name), reply_markup=admin_start_keyboard(),parse_mode='MarkdownV2')
             return
         await callback.message.answer_photo(get_image(),caption=start_message(), reply_markup=start_keyboard(),parse_mode='MarkdownV2')
