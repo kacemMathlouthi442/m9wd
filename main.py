@@ -53,15 +53,6 @@ dp.callback_query.register(get_keys_callback, lambda c: c.data in ['3 months','1
 
 dp.message.register(unknown_command,lambda message: message.text and message.text.startswith('/'))
 
-async def main():
-    print("Bot is running...")
-    await bot.delete_webhook(drop_pending_updates=True)
-    await init_db()
-    await create_tables()
-    await dp.start_polling(bot)
-
-if __name__ == "__main__":
-    asyncio.run(main())
 
 
 
